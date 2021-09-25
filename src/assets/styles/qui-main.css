@@ -1,0 +1,110 @@
+@import '../../../node_modules/@qvant/qui-max/dist/css/main.css';
+@import '../../../node_modules/@qvant/qui-max/dist/icons/icons.css';
+@import '../../../node_modules/@qvant/qui-max/dist/css/q-button.css';
+@import '../../../node_modules/@qvant/qui-max/dist/css/q-option.css';
+@import '../../../node_modules/@qvant/qui-max/dist/css/q-select.css';
+@import '../../../node_modules/@qvant/qui-max/dist/css/q-form-item.css';
+@import '../../../node_modules/@qvant/qui-max/dist/css/q-input.css';
+
+/* @import '../../../node_modules/@qvant/qui-max/dist/css/q-input-number.css'; */
+@import '../../../node_modules/@qvant/qui-max/dist/css/q-pagination.css';
+@import '../../../node_modules/@qvant/qui-max/dist/css/q-scrollbar.css';
+
+.form-item--no-error .q-form-item__body {
+	padding-bottom: 0;
+}
+
+.q-pagination {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.q-form__footer {
+	margin-top: 0.3rem;
+}
+
+.q-button + .q-button {
+	margin-left: 0;
+}
+
+.q-button--green {
+	--color-primary: hsl(119, 50%, 47%);
+	--gradient-primary: linear-gradient(90deg, var(--color-secondary-green) -27.44%, hsl(152, 69%, 44%) 100.54%);
+}
+
+.q-button--green.focus-visible {
+	--color-primary-darker: hsl(152, 75%, 36%);
+
+	background-image: none;
+}
+
+.q-link {
+	display: inline-block;
+
+	max-height: 40px;
+	padding: 12px 40px;
+	box-sizing: border-box;
+
+	color: var(--color-tertiary-white);
+	font-weight: var(--font-weight-bold);
+	font-size: 12px;
+	line-height: var(--line-height-button);
+	letter-spacing: var(--letter-spacing-base);
+	white-space: nowrap;
+	text-align: center;
+	text-transform: uppercase;
+	vertical-align: middle;
+
+	border: none;
+	border-radius: var(--border-radius-base);
+
+	background-color: var(--color-primary);
+	background-image: var(--gradient-primary);
+
+	outline: none;
+
+	box-shadow: -1px -1px 3px rgba(var(--color-rgb-white), 0.25), 1px 1px 3px rgba(var(--color-rgb-blue), 0.4),
+		4px 4px 8px rgba(var(--color-rgb-blue), 0.4), -4px -4px 12px var(--color-tertiary-white);
+
+	cursor: pointer;
+
+	appearance: none;
+
+	transition: background-color 0.1s;
+}
+
+.q-link--secondary {
+	color: var(--color-primary-blue);
+
+	background-color: var(--color-tertiary-gray);
+	background-image: none;
+
+	box-shadow: var(--box-shadow-primary);
+}
+
+.q-link:hover {
+	background-color: var(--color-primary);
+	background-image: none;
+
+	box-shadow: -1px -1px 4px rgba(var(--color-rgb-white), 0.25), 1px 1px 4px rgba(var(--color-rgb-blue), 0.4),
+		4px 4px 8px rgba(var(--color-rgb-blue), 0.4), -4px -4px 8px rgba(var(--color-rgb-white), 0.8);
+}
+
+.q-link--secondary:hover {
+	color: var(--color-tertiary-white);
+
+	background-color: var(--color-primary);
+
+	box-shadow: var(--box-shadow-hover);
+}
+
+.q-link.focus-visible {
+	background-color: var(--color-primary-darker);
+	background-image: none;
+}
+
+.q-link--secondary.focus-visible {
+	color: var(--color-tertiary-white);
+
+	background-color: var(--color-primary-darker);
+}
