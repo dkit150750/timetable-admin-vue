@@ -6,18 +6,9 @@
 import axios from 'axios';
 import { useUserStore } from '~/stores/user';
 
-let token = '';
-const apiData: { baseURL: string; headers?: { Authorization: string } } = { baseURL: 'https://api-time.dtivt.ru/api' };
-const isServer = typeof window === 'undefined';
-if (!isServer) {
-	token = localStorage.getItem('user-token') || '';
-
-	if (token !== '') {
-		apiData.headers = { Authorization: `Bearer ${token}` };
-	}
-}
-
-export const apiClient = axios.create(apiData);
+export const apiClient = axios.create({
+	baseURL: 'https://api-time.dtivt.ru/api',
+});
 
 /*
  * Добавьте перехватчик ответов

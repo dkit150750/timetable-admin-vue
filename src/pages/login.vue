@@ -58,8 +58,6 @@ const handleSubmitClick = async () => {
 		const response = await AuthService.login(payload);
 		const userStore = useUserStore();
 		userStore.setUser(response.data.user);
-		localStorage.setItem('user-token', response.data.token);
-		localStorage.setItem('user', JSON.stringify(response.data.user));
 		router.push('/');
 	} catch (error: any) {
 		errors.login.message = error?.response?.data?.errors.login[0];

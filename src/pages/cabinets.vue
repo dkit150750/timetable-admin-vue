@@ -46,8 +46,6 @@ const exitIfError = (error: any) => {
 		userStore.logout();
 		AuthService.logout();
 		router.push('/error');
-		localStorage.removeItem('user-token');
-		localStorage.removeItem('user');
 	}
 };
 

@@ -1,15 +1,8 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import User from '~/types/User';
 
-let userLocal: User | null = null;
-const isServer = typeof window === 'undefined';
-if (!isServer) {
-	const userLocalStorage = localStorage.getItem('user');
-	userLocal = userLocalStorage != null ? JSON.parse(userLocalStorage) : null;
-}
-
 export const useUserStore = defineStore('user', () => {
-	const user: { data: User | null } = reactive({ data: userLocal });
+	const user: { data: User | null } = reactive({ data: null });
 
 	function setUser(data: User | null) {
 		user.data = data;

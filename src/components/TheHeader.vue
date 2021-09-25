@@ -100,8 +100,6 @@ const logout = () => {
 	AuthService.logout();
 	const userStore = useUserStore();
 	userStore.logout();
-	localStorage.removeItem('user-token');
-	localStorage.removeItem('user');
 	router.push('/login');
 };
 </script>
