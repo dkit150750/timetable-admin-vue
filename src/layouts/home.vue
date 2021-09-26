@@ -7,7 +7,9 @@
 		<footer class="home-footer">
 			<div class="home-footer__container">
 				<p class="home-footer__copy">@teleskop150750 <span class="footer__icon footer__icon--1"></span></p>
-				<a class="home-footer__dkit" href="http://dtivt.ru/"><span class="footer__icon footer__icon--2"></span></a>
+				<a class="home-footer__dkit" href="https://dkit-timetable.netlify.app/" target="_blank"
+					><span class="footer__icon footer__icon--2"></span
+				></a>
 			</div>
 		</footer>
 	</div>

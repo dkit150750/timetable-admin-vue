@@ -11,7 +11,9 @@
 		<footer class="login-footer">
 			<div class="login-footer__container">
 				<p class="footer__copy">@teleskop150750 <span class="footer__icon footer__icon--1"></span></p>
-				<a class="footer__dkit" href="http://dtivt.ru/"><span class="footer__icon footer__icon--2"></span></a>
+				<a class="footer__dkit" href="https://dkit-timetable.netlify.app/" target="_blank"
+					><span class="footer__icon footer__icon--2"></span
+				></a>
 			</div>
 		</footer>
 	</div>
