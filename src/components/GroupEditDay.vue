@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue';
+import LessonInfo from '~/types/LessonInfo';
 import Item from '~/types/Item';
 
 defineProps({
@@ -48,21 +49,7 @@ const emit = defineEmits({
 	updateLesson: null,
 });
 
-type Peyload = {
-	id: number;
-	oddDiscipline_id: number;
-	evenDiscipline_id: number;
-	firstOddTeacher_id: number;
-	secondOddTeacher_id: number;
-	firstEvenTeacher_id: number;
-	secondEvenTeacher_id: number;
-	firstOddCabinet_id: number;
-	secondOddCabinet_id: number;
-	firstEvenCabinet_id: number;
-	secondEvenCabinet_id: number;
-};
-
-const updateHanlder = (id: number, payload: Peyload) => {
+const updateHanlder = (id: number, payload: LessonInfo) => {
 	emit('updateLesson', id, payload);
 };
 </script>

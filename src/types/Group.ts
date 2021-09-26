@@ -1,5 +1,5 @@
 import Day from '~/types/Day';
-import Change from '~/types/Change';
+import Lesson from '~/types/Lesson';
 
 export default interface Group {
 	id: number;
@@ -7,5 +7,5 @@ export default interface Group {
 	slug: string;
 	course: number;
 	days: Day[];
-	changes: Change[];
+	changes: Lesson[];
 }

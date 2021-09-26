@@ -54,6 +54,7 @@ import DateService from '~/services/DateService';
 import ChangeService from '~/services/ChangeService';
 import Group from '~/types/Group';
 import GroupInfo from '~/types/GroupInfo';
+import LessonInfo from '~/types/LessonInfo';
 import Item from '~/types/Item';
 import { useUserStore } from '~/stores/user';
 
@@ -183,21 +184,7 @@ const updateDate = async () => {
 	}
 };
 
-type Peyload = {
-	id: number;
-	oddDiscipline_id: number;
-	evenDiscipline_id: number;
-	firstOddTeacher_id: number;
-	secondOddTeacher_id: number;
-	firstEvenTeacher_id: number;
-	secondEvenTeacher_id: number;
-	firstOddCabinet_id: number;
-	secondOddCabinet_id: number;
-	firstEvenCabinet_id: number;
-	secondEvenCabinet_id: number;
-};
-
-const updateLesson = async (id: number, payload: Peyload) => {
+const updateLesson = async (id: number, payload: LessonInfo) => {
 	try {
 		ChangeService.updateItem(id, payload);
 	} catch (error) {
