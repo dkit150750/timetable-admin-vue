@@ -219,8 +219,8 @@ const lessonData = reactive({
 	// преподаватели
 	firstOddTeacherName: {
 		remoteLoading: false,
-		id: properties.lesson.firstOddCabinet.id,
-		options: properties.cabinets,
+		id: properties.lesson.firstOddTeacher.id,
+		options: properties.teachers,
 	},
 	secondOddTeacherName: {
 		remoteLoading: false,
