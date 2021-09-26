@@ -213,7 +213,7 @@ const fresh = async () => {
 		if (typeof dayName.value === 'string') {
 			await GroupService.fresh(dayName.value);
 			if (typeof groupSlug.value === 'string') {
-				getGroup(groupSlug.value);
+				await getGroup(groupSlug.value);
 			}
 		}
 	} catch (error) {
