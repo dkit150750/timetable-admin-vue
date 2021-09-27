@@ -9,7 +9,7 @@
 			<p class="lesson__title">Кабинет /2</p>
 		</div>
 		<p class="lesson__even-name">Желтая</p>
-		<p class="lesson__odd-name">Заленая</p>
+		<p class="lesson__odd-name">Зелёная</p>
 		<div class="lesson__odd-info">
 			<!-- Дисциплина -->
 			<q-select
