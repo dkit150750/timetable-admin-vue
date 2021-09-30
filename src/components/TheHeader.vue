@@ -113,7 +113,7 @@ const logout = () => {
 
 	height: 64px;
 
-	border-bottom: 1px solid hsl(0, 0%, 42%);
+	border-bottom: 1px solid var(--header-color);
 }
 
 .header__container {
@@ -126,7 +126,7 @@ const logout = () => {
 }
 
 .header__title {
-	color: hsl(0, 0%, 42%);
+	color: var(--header-color);
 	font-weight: 700;
 	font-size: 1.5rem;
 }
@@ -186,7 +186,7 @@ const logout = () => {
 		width: 14rem;
 		padding: 1rem;
 
-		border-right: 1px solid hsl(0, 0%, 42%);
+		border-right: 1px solid var(--header-color);
 
 		background-color: hsl(240, 10%, 96%);
 
@@ -228,7 +228,7 @@ const logout = () => {
 	padding: 0 0.2em;
 	padding: 0;
 
-	color: hsl(0, 0%, 42%);
+	color: var(--header-color);
 	font-weight: 600;
 	font-size: 1rem;
 	line-height: 1.5;

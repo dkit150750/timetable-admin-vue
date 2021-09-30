@@ -11,6 +11,11 @@ import AutoImport from 'unplugin-auto-import/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import Eslint from 'vite-plugin-eslint';
 import Stylelint from '@amatlash/vite-plugin-stylelint';
+import Markdown from 'vite-plugin-md';
+import Prism from 'markdown-it-prism';
+import LinkAttributes from 'markdown-it-link-attributes';
+
+const markdownWrapperClasses = 'prose prose-sm m-auto text-left';
 
 export default defineConfig({
 	resolve: {
@@ -47,12 +52,12 @@ export default defineConfig({
 		// https://github.com/antfu/unplugin-vue-components
 		Components({
 			// allow auto load markdown components under `./src/components/`
-			extensions: ['vue'],
+			extensions: ['vue', 'md'],
 
 			dts: true,
 
 			// allow auto import and register components used in markdown
-			include: [/\.vue$/, /\.vue\?vue/],
+			include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 
 			// custom resolvers
 			resolvers: [
@@ -105,6 +110,23 @@ export default defineConfig({
 		// https://github.com/AMatlash/vite-plugin-stylelint
 		Stylelint({
 			include: [path.resolve(__dirname, 'src/**')],
+		}),
+
+		// https://github.com/antfu/vite-plugin-md
+		Markdown({
+			wrapperClasses: markdownWrapperClasses,
+			headEnabled: true,
+			markdownItSetup(md) {
+				// https://prismjs.com/
+				md.use(Prism);
+				md.use(LinkAttributes, {
+					pattern: /^https?:\/\//,
+					attrs: {
+						target: '_blank',
+						rel: 'noopener',
+					},
+				});
+			},
 		}),
 	],
 

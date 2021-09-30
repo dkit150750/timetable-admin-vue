@@ -1,0 +1,334 @@
+#docs {
+	--prism-scheme: light;
+
+	/* Colors */
+	--prism-foreground: hsl(0, 0%, 43%);
+	--prism-background: hsl(0, 0%, 96%);
+
+	/* Tokens */
+	--prism-comment: hsl(0, 0%, 66%);
+	--prism-string: hsl(0, 0%, 33%);
+	--prism-literal: hsl(0, 0%, 20%);
+	--prism-keyword: hsl(0, 0%, 0%);
+	--prism-function: hsl(0, 0%, 31%);
+	--prism-deleted: hsl(0, 0%, 20%);
+	--prism-class: hsl(0, 0%, 20%);
+	--prism-builtin: hsl(0, 0%, 46%);
+	--prism-property: hsl(0, 0%, 20%);
+	--prism-namespace: hsl(0, 0%, 31%);
+	--prism-punctuation: hsl(0, 0%, 67%);
+	--prism-decorator: var(--prism-class);
+	--prism-operator: var(--prism-punctuation);
+	--prism-number: var(--prism-literal);
+	--prism-boolean: var(--prism-literal);
+	--prism-variable: var(--prism-literal);
+	--prism-constant: var(--prism-literal);
+	--prism-symbol: var(--prism-literal);
+	--prism-interpolation: var(--prism-literal);
+	--prism-selector: var(--prism-keyword);
+	--prism-keyword-control: var(--prism-keyword);
+	--prism-regex: var(--prism-string);
+	--prism-json-property: var(--prism-property);
+	--prism-inline-background: var(--prism-background);
+
+	/* Token Styles */
+	--prism-comment-style: italic;
+	--prism-url-decoration: underline;
+
+	/* Extension */
+	--prism-line-number: hsl(0, 0%, 65%);
+	--prism-line-number-gutter: hsl(0, 0%, 20%);
+	--prism-line-highlight-background: hsl(0, 0%, 93%);
+	--prism-selection-background: hsl(0, 0%, 67%);
+	--prism-marker-color: var(--prism-foreground);
+	--prism-marker-opacity: 0.4;
+	--prism-marker-font-size: 0.8em;
+
+	/* Font */
+	--prism-font-size: 1em;
+	--prism-line-height: 1.5em;
+	--prism-font-family: monospace;
+	--prism-inline-font-size: var(--prism-font-size);
+	--prism-block-font-size: var(--prism-font-size);
+
+	/* Sizing */
+	--prism-tab-size: 2;
+	--prism-block-padding-x: 1em;
+	--prism-block-padding-y: 1em;
+	--prism-block-margin-x: 0;
+	--prism-block-margin-y: 0.5em;
+	--prism-block-radius: 0.3em;
+	--prism-inline-padding-x: 0.3em;
+	--prism-inline-padding-y: 0.1em;
+	--prism-inline-radius: 0.3em;
+
+	/* Dark */
+	--prism-scheme: dark;
+	--prism-foreground: hsl(46, 20%, 79%);
+	--prism-background: hsl(0, 0%, 12%);
+	--prism-comment: hsl(120, 6%, 49%);
+	--prism-string: hsl(10, 53%, 64%);
+	--prism-literal: hsl(168, 40%, 43%);
+	--prism-keyword: hsl(154, 31%, 44%);
+	--prism-boolean: hsl(153, 59%, 26%);
+	--prism-number: hsl(208, 42%, 57%);
+	--prism-variable: hsl(49, 41%, 60%);
+	--prism-function: hsl(75, 35%, 56%);
+	--prism-deleted: hsl(356, 34%, 47%);
+	--prism-class: hsl(188, 46%, 54%);
+	--prism-builtin: hsl(30, 66%, 65%);
+	--prism-property: hsl(17, 62%, 65%);
+	--prism-namespace: hsl(347, 54%, 70%);
+	--prism-punctuation: hsl(0, 0%, 52%);
+	--prism-decorator: hsl(0, 26%, 65%);
+	--prism-regex: hsl(17, 46%, 46%);
+	--prism-json-property: hsl(202, 21%, 52%);
+	--prism-line-number: hsl(0, 0%, 53%);
+	--prism-line-number-gutter: hsl(0, 0%, 93%);
+	--prism-line-highlight-background: hsl(0, 0%, 27%);
+	--prism-selection-background: hsl(0, 0%, 27%);
+}
+
+div[class*='language-'],
+pre[class*='language-'],
+code[class*='language-'] {
+	color: var(--prism-foreground) !important;
+	font-size: var(--prism-font-size);
+	font-family: var(--prism-font-family);
+	line-height: var(--prism-line-height);
+	direction: ltr;
+	white-space: pre;
+	text-align: left;
+	word-break: normal;
+	word-spacing: normal;
+	-moz-tab-size: var(--prism-tab-size);
+	-o-tab-size: var(--prism-tab-size);
+	tab-size: var(--prism-tab-size);
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+div[class*='language-'],
+pre[class*='language-'] {
+	margin: var(--prism-block-margin-y) var(--prism-block-margin-x);
+	padding: var(--prism-block-padding-y) var(--prism-block-padding-x);
+
+	font-size: var(--prism-block-font-size);
+
+	border-radius: var(--prism-block-radius);
+
+	background: var(--prism-background);
+
+	overflow: auto;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+	padding: var(--prism-inline-padding-y) var(--prism-inline-padding-x);
+
+	font-size: var(--prism-inline-font-size);
+
+	border-radius: var(--prism-inline-radius);
+
+	background: var(--prism-inline-background);
+}
+
+/* Selection */
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection,
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+	background: var(--prism-selection-background);
+}
+
+/* Tokens */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: var(--prism-comment);
+	font-style: var(--prism-comment-style);
+}
+
+.token.namespace {
+	color: var(--prism-namespace);
+}
+
+.token.interpolation {
+	color: var(--prism-interpolation);
+}
+
+.token.string {
+	color: var(--prism-string);
+}
+
+.token.punctuation {
+	color: var(--prism-punctuation);
+}
+
+.token.operator {
+	color: var(--prism-operator);
+}
+
+.token.keyword.module,
+.token.keyword.control-flow {
+	color: var(--prism-keyword-control);
+}
+
+.token.url,
+.token.symbol,
+.token.inserted {
+	color: var(--prism-symbol);
+}
+
+.token.constant {
+	color: var(--prism-constant);
+}
+
+.token.string.url {
+	text-decoration: var(--prism-url-decoration);
+}
+
+.token.boolean,
+.language-json .token.boolean {
+	color: var(--prism-boolean);
+}
+
+.token.number,
+.language-json .token.number {
+	color: var(--prism-number);
+}
+
+.token.variable {
+	color: var(--prism-variable);
+}
+
+.token.keyword {
+	color: var(--prism-keyword);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.selector {
+	color: var(--prism-selector);
+}
+
+.token.function {
+	color: var(--prism-function);
+}
+
+.token.deleted {
+	color: var(--prism-deleted);
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.class-name {
+	color: var(--prism-class);
+}
+
+.token.tag,
+.token.builtin {
+	color: var(--prism-builtin);
+}
+
+.token.attr-name,
+.token.property,
+.token.entity {
+	color: var(--prism-property);
+}
+
+.language-json .token.property {
+	color: var(--prism-json-property);
+}
+
+.token.regex {
+	color: var(--prism-regex);
+}
+
+.token.decorator,
+.token.annotation {
+	color: var(--prism-decorator);
+}
+
+/* overrides color-values for the Line Numbers plugin
+ * http://prismjs.com/plugins/line-numbers/
+ */
+.line-numbers .line-numbers-rows {
+	border-right-color: var(--prism-line-number);
+}
+
+.line-numbers-rows > span::before {
+	color: var(--prism-line-number-gutter);
+}
+
+/* overrides color-values for the Line Highlight plugin
+  * http://prismjs.com/plugins/line-highlight/
+  */
+.line-highlight {
+	background: var(--prism-line-highlight-background);
+}
+
+table {
+	margin-bottom: 20px;
+
+	border: none;
+}
+
+table thead th {
+	padding: 10px 15px;
+
+	font-weight: bold;
+	font-size: 14px;
+	text-align: left;
+
+	border: none;
+
+	background: hsl(0, 0%, 30%);
+}
+table thead tr th:first-child {
+	border-radius: 2px 0 0 2px;
+}
+table thead tr th:last-child {
+	border-radius: 0 2px 2px 0;
+}
+table tbody td {
+	padding: 10px 15px;
+
+	font-size: 14px;
+	text-align: left;
+	vertical-align: top;
+
+	border: none;
+
+	background-color: hsl(0, 0%, 12%);
+}
+table tbody tr:nth-child(even) {
+	/* background: hsl(0, 0%, 95%); */
+}
+table tbody tr td:first-child {
+	border-radius: 2px 0 0 2px;
+}
+table tbody tr td:last-child {
+	border-radius: 0 2px 2px 0;
+}
+
+.tables {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
