@@ -131,7 +131,7 @@ const handleSubmitClick = async (): Promise<void> => {
 	try {
 		const payloag = {
 			name: formModel.name,
-			course: Number.parseFloat(formModel.name),
+			course: Number.parseFloat(formModel.course),
 		};
 		const response = await GroupService.addItem(payloag);
 		groupsData[response.data.data.course - 1].unshift(response.data.data);
