@@ -322,16 +322,16 @@ watch(
 	column-gap: 20px;
 }
 
-@media screen and (min-width: 440px) {
+@media screen and (min-width: 520px) {
 	.lesson {
 		display: grid;
-		grid-template-columns: repeat(2, 160px);
+		grid-template-columns: repeat(2, 210px);
 
 		column-gap: 20px;
 	}
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 840px) {
 	.lesson {
 		grid-template-columns: 1fr;
 
@@ -349,7 +349,7 @@ watch(
 	display: none;
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 840px) {
 	.lesson__titles {
 		margin-bottom: 10px;
 	}
@@ -362,18 +362,18 @@ watch(
 	row-gap: 20px;
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 840px) {
 	.lesson__titles,
 	.lesson__even-info,
 	.lesson__odd-info {
 		display: grid;
-		grid-template-columns: 130px 130px 90px 130px 90px;
+		grid-template-columns: 210px 150px 90px 150px 90px;
 
 		column-gap: 20px;
 	}
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 840px) {
 	.lesson__odd-info {
 		margin-bottom: 20px;
 	}
@@ -389,7 +389,7 @@ watch(
 	padding: 0.4em;
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 840px) {
 	.lesson__even-name,
 	.lesson__odd-name {
 		display: none;
