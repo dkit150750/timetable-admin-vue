@@ -161,6 +161,7 @@
 import { PropType } from 'vue';
 import Lesson from '~/types/Lesson';
 import Item from '~/types/Item';
+import LessonInfo from '~/types/LessonInfo';
 
 const properties = defineProps({
 	lesson: {
@@ -190,9 +191,9 @@ const properties = defineProps({
 	},
 });
 
-const emit = defineEmits({
-	updateLesson: null,
-});
+const emit = defineEmits<{
+	(event: 'updateLesson', id: number, payload: LessonInfo): void;
+}>();
 
 const numberLesson = computed(() => {
 	if (typeof properties.index === 'string') {

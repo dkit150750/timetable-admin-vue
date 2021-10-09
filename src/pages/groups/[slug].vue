@@ -163,7 +163,7 @@ const updateGroupInfo = async (field: 'name' | 'course') => {
 			} else {
 				payload.course = courseSelect.id;
 			}
-			await GroupService.updateItem(groupData.data.slug, payload);
+			await GroupService.updateItem(groupData.data.id, payload);
 		} catch (error: any) {
 			if (error?.response?.data?.errors?.name) {
 				errors.name.message = error?.response?.data?.errors?.name[0] ?? '';

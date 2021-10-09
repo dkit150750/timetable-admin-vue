@@ -45,9 +45,9 @@ defineProps({
 	},
 });
 
-const emit = defineEmits({
-	updateLesson: null,
-});
+const emit = defineEmits<{
+	(event: 'updateLesson', id: number, payload: LessonInfo): void;
+}>();
 
 const updateHanlder = (id: number, payload: LessonInfo) => {
 	emit('updateLesson', id, payload);

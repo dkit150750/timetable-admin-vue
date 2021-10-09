@@ -22,8 +22,8 @@ export default {
 		return (await Api.apiClient.post('/groups', payload)) as unknown as ItemResponse;
 	},
 
-	async updateItem(slug: string, payload: { name?: string; course?: number }): Promise<ItemResponse> {
-		return (await Api.apiClient.put(`/groups/${slug}`, payload)) as unknown as ItemResponse;
+	async updateItem(id: number, payload: { name?: string; course?: number }): Promise<ItemResponse> {
+		return (await Api.apiClient.put(`/groups/${id}`, payload)) as unknown as ItemResponse;
 	},
 
 	async deleteItem(slug: string): Promise<{ id: number }> {
