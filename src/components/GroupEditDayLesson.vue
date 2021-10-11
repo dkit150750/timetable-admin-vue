@@ -162,8 +162,8 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue';
-import Lesson from '~/types/Lesson';
 import Item from '~/types/Item';
+import Lesson from '~/types/Lesson';
 import LessonInfo from '~/types/LessonInfo';
 
 const properties = defineProps({
@@ -195,7 +195,7 @@ const properties = defineProps({
 });
 
 const emit = defineEmits<{
-	(event: 'updateLesson', id: number, payload: LessonInfo): void;
+	(event: 'updateLesson', id: number, payloadIds: LessonInfo, lessonData: Lesson): void;
 }>();
 
 const numberLesson = computed(() => {
@@ -295,7 +295,7 @@ watch(
 	() => lessonData,
 	(data) => {
 		const { id } = properties.lesson;
-		const payload = {
+		const payloadIds = {
 			id,
 			// дисциплины
 			oddDiscipline_id: data.oddDisciplineName.id,
@@ -311,7 +311,54 @@ watch(
 			firstEvenCabinet_id: data.firstEvenCabinetName.id,
 			secondEvenCabinet_id: data.secondEvenCabinetName.id,
 		};
-		emit('updateLesson', id, payload);
+
+		const payloadData = {
+			id,
+			// дисциплины
+			oddDiscipline: {
+				id: data.oddDisciplineName.id,
+				name: data.oddDisciplineName.options.find((item) => item.id === data.oddDisciplineName.id)?.name ?? '',
+			},
+			evenDiscipline: {
+				id: data.evenDisciplineName.id,
+				name: data.evenDisciplineName.options.find((item) => item.id === data.evenDisciplineName.id)?.name ?? '',
+			},
+			// преподаватели
+			firstOddTeacher: {
+				id: data.firstOddTeacherName.id,
+				name: data.firstOddTeacherName.options.find((item) => item.id === data.firstOddTeacherName.id)?.name ?? '',
+			},
+			secondOddTeacher: {
+				id: data.secondOddTeacherName.id,
+				name: data.secondOddTeacherName.options.find((item) => item.id === data.secondOddTeacherName.id)?.name ?? '',
+			},
+			firstEvenTeacher: {
+				id: data.firstEvenTeacherName.id,
+				name: data.firstEvenTeacherName.options.find((item) => item.id === data.firstEvenTeacherName.id)?.name ?? '',
+			},
+			secondEvenTeacher: {
+				id: data.secondEvenTeacherName.id,
+				name: data.secondEvenTeacherName.options.find((item) => item.id === data.secondEvenTeacherName.id)?.name ?? '',
+			},
+			// кабинеты
+			firstOddCabinet: {
+				id: data.firstOddCabinetName.id,
+				name: data.firstOddCabinetName.options.find((item) => item.id === data.firstOddCabinetName.id)?.name ?? '',
+			},
+			secondOddCabinet: {
+				id: data.secondOddCabinetName.id,
+				name: data.secondOddCabinetName.options.find((item) => item.id === data.secondOddCabinetName.id)?.name ?? '',
+			},
+			firstEvenCabinet: {
+				id: data.firstEvenCabinetName.id,
+				name: data.firstEvenCabinetName.options.find((item) => item.id === data.firstEvenCabinetName.id)?.name ?? '',
+			},
+			secondEvenCabinet: {
+				id: data.secondEvenCabinetName.id,
+				name: data.secondEvenCabinetName.options.find((item) => item.id === data.secondEvenCabinetName.id)?.name ?? '',
+			},
+		};
+		emit('updateLesson', id, payloadIds, payloadData);
 	},
 	{
 		deep: true,

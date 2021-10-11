@@ -10,7 +10,7 @@
 				:teachers="teachers"
 				:disciplines="disciplines"
 				:cabinets="cabinets"
-				@updateLesson="updateHanlder"
+				@updateLesson="updateLessonHanlder"
 			/>
 		</div>
 	</div>
@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue';
+import Lesson from '~/types/Lesson';
 import LessonInfo from '~/types/LessonInfo';
 import Item from '~/types/Item';
 
@@ -46,11 +47,11 @@ defineProps({
 });
 
 const emit = defineEmits<{
-	(event: 'updateLesson', id: number, payload: LessonInfo): void;
+	(event: 'updateLesson', id: number, payloadIds: LessonInfo, payloadData: Lesson): void;
 }>();
 
-const updateHanlder = (id: number, payload: LessonInfo) => {
-	emit('updateLesson', id, payload);
+const updateLessonHanlder = (id: number, payloadIds: LessonInfo, payloadData: Lesson) => {
+	emit('updateLesson', id, payloadIds, payloadData);
 };
 </script>
 
