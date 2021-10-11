@@ -85,6 +85,7 @@ const disciplinesData: { list: Item[] } = reactive({ list: [] });
 const cabinetsData: { list: Item[] } = reactive({ list: [] });
 
 const groupData: { data: Group | null } = reactive({ data: null });
+let groupInitName = '';
 const groupModel = reactive({ name: '' });
 const daysData = computed(() => (groupData.data?.days.length ? groupData.data.days[daySelect.id - 1] : null));
 
@@ -95,6 +96,7 @@ const getGroup = async (slug: string) => {
 
 		// eslint-disable-next-line prefer-destructuring
 		groupModel.name = response.data.data.name;
+		groupInitName = response.data.data.name;
 		courseSelect.id = response.data.data.course;
 	} catch (error) {
 		exitIfError(error);
@@ -160,7 +162,9 @@ const updateGroupInfo = async (field: 'name' | 'course') => {
 		try {
 			const payload: { name?: string; course?: number } = {};
 			if (field === 'name') {
+				if (groupModel.name === groupInitName) return;
 				payload.name = groupModel.name;
+				groupInitName = groupModel.name;
 			} else {
 				payload.course = courseSelect.id;
 			}
