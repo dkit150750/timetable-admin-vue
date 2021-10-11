@@ -2,6 +2,7 @@
 	<div class="lesson">
 		<h3 class="lesson__number">{{ numberLesson }} - Урок</h3>
 		<div class="lesson__titles">
+			<span></span>
 			<p class="lesson__title">Дисциплина</p>
 			<p class="lesson__title">Преподаватель</p>
 			<p class="lesson__title">Кабинет</p>
@@ -11,6 +12,7 @@
 		<p class="lesson__even-name">Желтая</p>
 		<p class="lesson__odd-name">Зелёная</p>
 		<div class="lesson__odd-info">
+			<div class="lesson__odd-info-line-name">Ж</div>
 			<!-- Дисциплина -->
 			<q-select
 				v-model="lessonData.oddDisciplineName.id"
@@ -83,6 +85,7 @@
 			</q-select>
 		</div>
 		<div class="lesson__even-info">
+			<div class="lesson__even-info-line-name">З</div>
 			<!-- Дисциплина -->
 			<q-select
 				v-model="lessonData.evenDisciplineName.id"
@@ -159,8 +162,9 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue';
-import Lesson from '~/types/Lesson';
 import Item from '~/types/Item';
+import Lesson from '~/types/Lesson';
+import LessonInfo from '~/types/LessonInfo';
 
 const properties = defineProps({
 	lesson: {
@@ -190,9 +194,9 @@ const properties = defineProps({
 	},
 });
 
-const emit = defineEmits({
-	updateLesson: null,
-});
+const emit = defineEmits<{
+	(event: 'updateLesson', id: number, payloadIds: LessonInfo, lessonData: Lesson): void;
+}>();
 
 const numberLesson = computed(() => {
 	if (typeof properties.index === 'string') {
@@ -291,7 +295,7 @@ watch(
 	() => lessonData,
 	(data) => {
 		const { id } = properties.lesson;
-		const payload = {
+		const payloadIds = {
 			id,
 			// дисциплины
 			oddDiscipline_id: data.oddDisciplineName.id,
@@ -307,7 +311,54 @@ watch(
 			firstEvenCabinet_id: data.firstEvenCabinetName.id,
 			secondEvenCabinet_id: data.secondEvenCabinetName.id,
 		};
-		emit('updateLesson', id, payload);
+
+		const payloadData = {
+			id,
+			// дисциплины
+			oddDiscipline: {
+				id: data.oddDisciplineName.id,
+				name: data.oddDisciplineName.options.find((item) => item.id === data.oddDisciplineName.id)?.name ?? '',
+			},
+			evenDiscipline: {
+				id: data.evenDisciplineName.id,
+				name: data.evenDisciplineName.options.find((item) => item.id === data.evenDisciplineName.id)?.name ?? '',
+			},
+			// преподаватели
+			firstOddTeacher: {
+				id: data.firstOddTeacherName.id,
+				name: data.firstOddTeacherName.options.find((item) => item.id === data.firstOddTeacherName.id)?.name ?? '',
+			},
+			secondOddTeacher: {
+				id: data.secondOddTeacherName.id,
+				name: data.secondOddTeacherName.options.find((item) => item.id === data.secondOddTeacherName.id)?.name ?? '',
+			},
+			firstEvenTeacher: {
+				id: data.firstEvenTeacherName.id,
+				name: data.firstEvenTeacherName.options.find((item) => item.id === data.firstEvenTeacherName.id)?.name ?? '',
+			},
+			secondEvenTeacher: {
+				id: data.secondEvenTeacherName.id,
+				name: data.secondEvenTeacherName.options.find((item) => item.id === data.secondEvenTeacherName.id)?.name ?? '',
+			},
+			// кабинеты
+			firstOddCabinet: {
+				id: data.firstOddCabinetName.id,
+				name: data.firstOddCabinetName.options.find((item) => item.id === data.firstOddCabinetName.id)?.name ?? '',
+			},
+			secondOddCabinet: {
+				id: data.secondOddCabinetName.id,
+				name: data.secondOddCabinetName.options.find((item) => item.id === data.secondOddCabinetName.id)?.name ?? '',
+			},
+			firstEvenCabinet: {
+				id: data.firstEvenCabinetName.id,
+				name: data.firstEvenCabinetName.options.find((item) => item.id === data.firstEvenCabinetName.id)?.name ?? '',
+			},
+			secondEvenCabinet: {
+				id: data.secondEvenCabinetName.id,
+				name: data.secondEvenCabinetName.options.find((item) => item.id === data.secondEvenCabinetName.id)?.name ?? '',
+			},
+		};
+		emit('updateLesson', id, payloadIds, payloadData);
 	},
 	{
 		deep: true,
@@ -319,19 +370,25 @@ watch(
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 
+	padding: 1rem;
+
 	column-gap: 20px;
 }
 
-@media screen and (min-width: 440px) {
+.lesson:nth-child(even) {
+	background-color: hsl(0, 0%, 90%);
+}
+
+@media screen and (min-width: 520px) {
 	.lesson {
 		display: grid;
-		grid-template-columns: repeat(2, 160px);
+		grid-template-columns: repeat(2, 210px);
 
 		column-gap: 20px;
 	}
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 870px) {
 	.lesson {
 		grid-template-columns: 1fr;
 
@@ -342,14 +399,14 @@ watch(
 .lesson__number {
 	grid-column: 1 / -1;
 
-	margin: 0;
+	margin: 0 0 5px;
 }
 
 .lesson__titles {
 	display: none;
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 870px) {
 	.lesson__titles {
 		margin-bottom: 10px;
 	}
@@ -362,18 +419,18 @@ watch(
 	row-gap: 20px;
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 870px) {
 	.lesson__titles,
 	.lesson__even-info,
 	.lesson__odd-info {
 		display: grid;
-		grid-template-columns: 130px 130px 90px 130px 90px;
+		grid-template-columns: 10px 210px 150px 90px 150px 90px;
 
 		column-gap: 20px;
 	}
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 870px) {
 	.lesson__odd-info {
 		margin-bottom: 20px;
 	}
@@ -389,9 +446,21 @@ watch(
 	padding: 0.4em;
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 870px) {
 	.lesson__even-name,
 	.lesson__odd-name {
+		display: none;
+	}
+}
+
+.lesson__odd-info-line-name,
+.lesson__even-info-line-name {
+	align-self: center;
+}
+
+@media screen and (max-width: 869px) {
+	.lesson__odd-info-line-name,
+	.lesson__even-info-line-name {
 		display: none;
 	}
 }

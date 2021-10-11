@@ -38,7 +38,7 @@
 				:disciplines="disciplinesData.list"
 				:cabinets="cabinetsData.list"
 				:changes="true"
-				@updateLesson="updateLesson"
+				@updateLesson="updateLessonHandler"
 			/>
 		</template>
 	</GroupEditWrapper>
@@ -184,7 +184,7 @@ const updateDate = async () => {
 	}
 };
 
-const updateLesson = async (id: number, payload: LessonInfo) => {
+const updateLessonHandler = async (id: number, payload: LessonInfo) => {
 	try {
 		ChangeService.updateItem(id, payload);
 	} catch (error) {

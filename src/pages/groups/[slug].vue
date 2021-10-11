@@ -34,7 +34,7 @@
 				:teachers="teachersData.list"
 				:disciplines="disciplinesData.list"
 				:cabinets="cabinetsData.list"
-				@updateLesson="updateLesson"
+				@updateLesson="updateLessonHanlder"
 			/>
 		</template>
 	</GroupEditWrapper>
@@ -50,6 +50,7 @@ import CabinetService from '~/services/CabinetService';
 import LessonService from '~/services/LessonService';
 import Group from '~/types/Group';
 import Item from '~/types/Item';
+import Lesson from '~/types/Lesson';
 import LessonInfo from '~/types/LessonInfo';
 
 const userStore = useUserStore();
@@ -163,7 +164,7 @@ const updateGroupInfo = async (field: 'name' | 'course') => {
 			} else {
 				payload.course = courseSelect.id;
 			}
-			await GroupService.updateItem(groupData.data.slug, payload);
+			await GroupService.updateItem(groupData.data.id, payload);
 		} catch (error: any) {
 			if (error?.response?.data?.errors?.name) {
 				errors.name.message = error?.response?.data?.errors?.name[0] ?? '';
@@ -185,9 +186,23 @@ const deleteHandler = async () => {
 	}
 };
 
-const updateLesson = async (id: number, payload: LessonInfo) => {
+const updateLessonHanlder = async (id: number, payloadIds: LessonInfo, payloadData: Lesson) => {
+	if (!groupData.data) return;
 	try {
-		await LessonService.updateItem(id, payload);
+		groupData.data.days = groupData.data.days.map((day) => {
+			const lessons = day.lessons.map((lesson) => {
+				if (lesson.id === id) {
+					return payloadData;
+				}
+				return lesson;
+			});
+			return {
+				id: day.id,
+				name: day.name,
+				lessons,
+			};
+		});
+		await LessonService.updateItem(id, payloadIds);
 	} catch (error) {
 		exitIfError(error);
 	}

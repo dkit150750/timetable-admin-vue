@@ -15,6 +15,7 @@
 						:id="teacher.id"
 						:key="teacher.id"
 						:name="teacher.name"
+						@changeItem="changeItemHandler"
 						@updateItem="updateItemHandler"
 						@deleteItem="deleteItemHandler"
 					/>
@@ -78,6 +79,13 @@ const addItemHandler = async (name: string) => {
 	}
 };
 
+const changeItemHandler = async (id: number, name: string) => {
+	const item = data.list.find((element) => element.id === id);
+	if (item) {
+		item.name = name;
+	}
+};
+
 const updateItem = Content.updateItemDecorator(TeacherService, data, 1);
 const updateItemHandler = async (id: number, name: string) => {
 	try {
@@ -106,10 +114,10 @@ const deleteItemHandler = async (id: number) => {
 			currentPage.value = lastPage.value - 1;
 		}
 		await getData(currentPage.value, searchModel.value.trim());
-		isLoading.status = false;
 	} catch (error) {
 		exitIfError(error);
 	}
+	isLoading.status = false;
 };
 
 const handlePageChange = async (value: number) => {
