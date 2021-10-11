@@ -15,6 +15,7 @@
 						:id="teacher.id"
 						:key="teacher.id"
 						:name="teacher.name"
+						@changeItem="changeItemHandler"
 						@updateItem="updateItemHandler"
 						@deleteItem="deleteItemHandler"
 					/>
@@ -75,6 +76,13 @@ const addItemHandler = async (name: string) => {
 		await addItem(name);
 	} catch (error) {
 		exitIfError(error);
+	}
+};
+
+const changeItemHandler = async (id: number, name: string) => {
+	const item = data.list.find((element) => element.id === id);
+	if (item) {
+		item.name = name;
 	}
 };
 
