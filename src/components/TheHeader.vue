@@ -66,6 +66,15 @@
 							<router-link
 								class="nav__link"
 								exact-active-class="nav__link--active"
+								to="/news"
+								@click="isOpenMenu = false"
+								>News</router-link
+							>
+						</li>
+						<li class="nav__item">
+							<router-link
+								class="nav__link"
+								exact-active-class="nav__link--active"
 								to="/user"
 								@click="isOpenMenu = false"
 								>User</router-link
@@ -128,7 +137,7 @@ const logout = () => {
 .header__title {
 	color: var(--header-color);
 	font-weight: 700;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 }
 
 .header__title:focus-visible {
@@ -230,7 +239,7 @@ const logout = () => {
 
 	color: var(--header-color);
 	font-weight: 600;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	line-height: 1.5;
 
 	border: 0;
