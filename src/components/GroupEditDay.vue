@@ -57,10 +57,25 @@ const updateHanlder = (id: number, payload: LessonInfo) => {
 <style>
 .day__name {
 	margin-top: 0;
+	padding: 0 1rem;
+}
+
+@media screen and (min-width: 450px) {
+	.day__name {
+		padding: 0 2rem;
+	}
 }
 
 .day__lessons {
 	display: grid;
-	gap: 30px;
+	gap: 10px;
+}
+
+@media screen and (min-width: 520px) {
+	.day__lessons {
+		justify-content: start;
+
+		padding: 1rem;
+	}
 }
 </style>

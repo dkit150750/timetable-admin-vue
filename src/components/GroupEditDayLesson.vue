@@ -2,6 +2,7 @@
 	<div class="lesson">
 		<h3 class="lesson__number">{{ numberLesson }} - Урок</h3>
 		<div class="lesson__titles">
+			<span></span>
 			<p class="lesson__title">Дисциплина</p>
 			<p class="lesson__title">Преподаватель</p>
 			<p class="lesson__title">Кабинет</p>
@@ -11,6 +12,7 @@
 		<p class="lesson__even-name">Желтая</p>
 		<p class="lesson__odd-name">Зелёная</p>
 		<div class="lesson__odd-info">
+			<div class="lesson__odd-info-line-name">Ж</div>
 			<!-- Дисциплина -->
 			<q-select
 				v-model="lessonData.oddDisciplineName.id"
@@ -83,6 +85,7 @@
 			</q-select>
 		</div>
 		<div class="lesson__even-info">
+			<div class="lesson__even-info-line-name">З</div>
 			<!-- Дисциплина -->
 			<q-select
 				v-model="lessonData.evenDisciplineName.id"
@@ -320,7 +323,13 @@ watch(
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 
+	padding: 1rem;
+
 	column-gap: 20px;
+}
+
+.lesson:nth-child(even) {
+	background-color: hsl(0, 0%, 90%);
 }
 
 @media screen and (min-width: 520px) {
@@ -332,7 +341,7 @@ watch(
 	}
 }
 
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 870px) {
 	.lesson {
 		grid-template-columns: 1fr;
 
@@ -343,14 +352,14 @@ watch(
 .lesson__number {
 	grid-column: 1 / -1;
 
-	margin: 0;
+	margin: 0 0 5px;
 }
 
 .lesson__titles {
 	display: none;
 }
 
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 870px) {
 	.lesson__titles {
 		margin-bottom: 10px;
 	}
@@ -363,18 +372,18 @@ watch(
 	row-gap: 20px;
 }
 
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 870px) {
 	.lesson__titles,
 	.lesson__even-info,
 	.lesson__odd-info {
 		display: grid;
-		grid-template-columns: 210px 150px 90px 150px 90px;
+		grid-template-columns: 10px 210px 150px 90px 150px 90px;
 
 		column-gap: 20px;
 	}
 }
 
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 870px) {
 	.lesson__odd-info {
 		margin-bottom: 20px;
 	}
@@ -390,9 +399,21 @@ watch(
 	padding: 0.4em;
 }
 
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 870px) {
 	.lesson__even-name,
 	.lesson__odd-name {
+		display: none;
+	}
+}
+
+.lesson__odd-info-line-name,
+.lesson__even-info-line-name {
+	align-self: center;
+}
+
+@media screen and (max-width: 869px) {
+	.lesson__odd-info-line-name,
+	.lesson__even-info-line-name {
 		display: none;
 	}
 }
