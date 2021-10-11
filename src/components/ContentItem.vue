@@ -1,7 +1,7 @@
 <template>
 	<li class="data-list-item">
-		<q-input v-model="itemName" aria-label="1" type="text" @blur="emit('updateItem', id, itemName)" />
-		<q-button v-if="id > minId" type="icon" @click="emit('deleteItem', id)">
+		<q-input v-model="itemName" aria-label="название" type="text" @blur="emit('updateItem', id, itemName)" />
+		<q-button v-if="id > minId" aria-label="удалить" type="icon" @click="emit('deleteItem', id)">
 			<ic:baseline-close />
 		</q-button>
 	</li>

@@ -106,10 +106,10 @@ const deleteItemHandler = async (id: number) => {
 			currentPage.value = lastPage.value - 1;
 		}
 		await getData(currentPage.value, searchModel.value.trim());
-		isLoading.status = false;
 	} catch (error) {
 		exitIfError(error);
 	}
+	isLoading.status = false;
 };
 
 const handlePageChange = async (value: number) => {
