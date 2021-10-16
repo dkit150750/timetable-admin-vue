@@ -64,7 +64,7 @@ const run = () => {
 
 @media (min-width: 500px) {
 	.not-work__image-wrapper {
-		width: 300px;
+		width: 250px;
 	}
 	.not-work__title {
 		font-size: 4rem;
@@ -73,7 +73,7 @@ const run = () => {
 
 @media (min-width: 1000px) {
 	.not-work__image-wrapper {
-		width: 400px;
+		width: 300px;
 	}
 	.not-work__title {
 		font-size: 5rem;
@@ -82,7 +82,7 @@ const run = () => {
 
 @media (min-width: 1200px) {
 	.not-work__image-wrapper {
-		width: 500px;
+		width: 400px;
 	}
 	.not-work__title {
 		font-size: 6rem;
@@ -91,7 +91,7 @@ const run = () => {
 
 @media (min-width: 1600px) {
 	.not-work__image-wrapper {
-		width: 600px;
+		width: 500px;
 	}
 	.not-work__title {
 		font-size: 7rem;
