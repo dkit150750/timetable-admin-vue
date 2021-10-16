@@ -1,5 +1,5 @@
 <template>
-	<div class="not-work" @click="run">
+	<div class="not-work" @click="run" @mousemove="run" @touchstart="run">
 		<span class="circle"></span>
 		<span class="circle circle--2"></span>
 		<div class="not-work__container">
@@ -21,19 +21,47 @@
 const audio = ref<HTMLAudioElement | null>(null);
 
 const run = () => {
-	audio.value?.play();
+	try {
+		audio.value?.play();
+	} catch (error) {
+		console.log(error);
+	}
 };
 // console.log(count.value);
 </script>
 
 <style>
 .not-work {
+	position: relative;
+
 	display: grid;
 	grid-template-columns: 1fr;
 	align-content: center;
 
 	height: 100%;
 	padding: 2rem 0;
+
+	overflow: hidden;
+}
+
+.not-work::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '';
+	z-index: 1;
+
+	width: 100%;
+	height: 100%;
+
+	background-color: rgba(0, 0, 0, 0);
+	background-image: radial-gradient(hsl(0, 72%, 65%), hsl(235, 62%, 73%));
+	background-image: radial-gradient(hsla(0, 12%, 92%, 0.411), hsla(0, 0%, 13%, 0.205));
+	background-image: none;
+
+	pointer-events: none;
+
+	animation: glow 4s ease-in-out infinite forwards alternate;
 }
 
 .not-work__container {
@@ -131,6 +159,8 @@ const run = () => {
 
 	filter: drop-shadow(3px 3px 3px rgba(151, 8, 207, 0.7)) drop-shadow(3px 3px 3px rgba(151, 8, 207, 0.7))
 		drop-shadow(-3px -3px 3px rgba(255, 6, 201, 0.7)) drop-shadow(-3px -3px 3px rgba(255, 6, 201, 0.7));
+
+	animation: glow-button 4s ease-in-out infinite forwards alternate;
 }
 
 .not-work__button-icon path {
@@ -153,7 +183,7 @@ const run = () => {
 
 	box-shadow: 10px 10px 10px 10px var(--color);
 
-	animation: circle 2s ease-in-out infinite forwards alternate;
+	animation: circle 2.1s ease-in-out infinite forwards alternate;
 }
 
 .circle--2 {
@@ -170,7 +200,7 @@ const run = () => {
 
 	transform: scale(3);
 
-	animation: circle2 4s ease-in-out infinite forwards alternate;
+	animation: circle2 4s cubic-bezier(0.29, -0.03, 0.42, 1.05) infinite forwards alternate;
 }
 
 @media (orientation: landscape) {
@@ -188,17 +218,17 @@ const run = () => {
 .circle::before {
 	position: absolute;
 	top: -5px;
-	left: 0;
+	left: 2px;
 	content: '';
 
-	width: 94%;
-	height: 94%;
+	width: 96%;
+	height: 96%;
 
 	border-radius: 50%;
 
 	background-color: hsl(0, 0%, 0%);
 
-	box-shadow: 5px 5px 10px 10px hsl(0, 0%, 0%);
+	box-shadow: 1px 5px 10px 10px hsl(0, 0%, 0%);
 }
 
 .circle--2::before {
@@ -212,19 +242,47 @@ const run = () => {
 
 @keyframes circle {
 	0% {
+		opacity: 0.7;
 		transform: translateY(0);
 	}
 	100% {
-		transform: translateY(20px) rotate(20deg);
+		transform: translateY(30px) rotate(14deg);
 	}
 }
 
 @keyframes circle2 {
 	0% {
+		opacity: 0.5;
 		transform: translateY(0);
 	}
 	100% {
+		opacity: 1;
 		transform: translateY(50px) rotate(-10deg);
+	}
+}
+
+@keyframes glow {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes glow-button {
+	0% {
+		opacity: 1;
+		filter: drop-shadow(3px 3px 3px rgba(151, 8, 207, 0.7)) drop-shadow(3px 3px 3px rgba(151, 8, 207, 0.7))
+			drop-shadow(-3px -3px 3px rgba(255, 6, 201, 0.7)) drop-shadow(-3px -3px 3px rgba(255, 6, 201, 0.7));
+		transform: translateY(0) rotate(3deg);
+	}
+	100% {
+		opacity: 0;
+		filter: drop-shadow(0 0 0 rgba(151, 8, 207, 0.7)) drop-shadow(0 0 0 rgba(151, 8, 207, 0.7))
+			drop-shadow(0 0 0 rgba(255, 6, 201, 0.7)) drop-shadow(0 0 0 rgba(255, 6, 201, 0.7));
+		transform: translateY(0) rotate(-10deg);
 	}
 }
 </style>
