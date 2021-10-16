@@ -8,14 +8,13 @@
 	</div>
 </template>
 
+<script setup lang="ts">
+const router = useRouter();
+router.push('/doggo');
+</script>
+
 <style>
 #layout {
-	--max-width: 1520px;
-	--header-color: hsl(0, 0%, 42%);
-
-	display: grid;
-	grid-template-rows: max-content 1fr max-content;
-
-	min-height: 100vh;
+	background-color: black;
 }
 </style>
