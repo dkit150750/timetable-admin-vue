@@ -161,7 +161,7 @@ const run = () => {
 
 	top: 10vmax;
 	left: auto;
-	right: 14vmin;
+	right: 4vmin;
 
 	width: 30vmin;
 	height: 30vmin;
@@ -174,6 +174,12 @@ const run = () => {
 }
 
 @media (orientation: landscape) {
+	.circle--2 {
+		right: 5vmax;
+	}
+}
+
+@media (orientation: landscape) and (min-width: 1450px) {
 	.circle--2 {
 		right: 15vmax;
 	}
