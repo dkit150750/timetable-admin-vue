@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useUserStore } from '~/stores/user';
 
 export const apiClient = axios.create({
-	baseURL: 'https://api-time.dtivt.ru/api',
+	baseURL: import.meta.env.VITE_API_URL,
 });
 
 /*
